@@ -5,6 +5,7 @@
 package com.mycompany.pap1.datatypes;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class dtAlimento extends dtDonacion {
     private String descripcionProductos;
