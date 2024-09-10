@@ -54,7 +54,7 @@ public class ControladorDonacion implements IControladorDonacion{
     }
 
     @Override
-        public void modificarDonacion(int id, dtDonacion datosModificados) {
+    public void modificarDonacion(int id, dtDonacion datosModificados) {
         ManejadorDonacion mD = ManejadorDonacion.getInstancia();
         Donacion donacionExistente = mD.buscarDonacionPorId(id);
 
@@ -75,9 +75,9 @@ public class ControladorDonacion implements IControladorDonacion{
                 return;
             }
 
-            System.out.println("Donacion modificada con exito.");
+            System.out.println("Donación modificada con éxito.");
         } else {
-            System.out.println("Error: donacion no encontrada.");
+            System.out.println("Error: donación no encontrada.");
         }
     }
 

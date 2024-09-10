@@ -37,4 +37,13 @@ public class ManejadorDonacion {
         }
         return null;
     }
+            public List<Donacion> obtenerDonacionesPorTipo(Class<? extends Donacion> tipo) {
+        List<Donacion> resultado = new ArrayList<>();
+        for (Donacion donacion : donaciones) {
+            if (tipo.isInstance(donacion)) {
+                resultado.add(donacion);
+            }
+        }
+        return resultado;
+    }
 }
