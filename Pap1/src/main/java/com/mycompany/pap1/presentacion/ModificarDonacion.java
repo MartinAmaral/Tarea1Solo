@@ -9,6 +9,8 @@ import com.mycompany.pap1.logica.Articulo;
 import com.mycompany.pap1.logica.Donacion;
 import com.mycompany.pap1.logica.ManejadorDonacion;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -41,14 +43,16 @@ public class ModificarDonacion extends JInternalFrame {
 
         // Panel de tablas
         JPanel panelTablas = new JPanel();
-        panelTablas.setLayout(new GridLayout(1, 2));
+        panelTablas.setLayout(new GridLayout(1, 2, 5, 5)); // Ajuste de espacios entre tablas
 
         tablaAlimentos = new JTable();
         JScrollPane scrollAlimentos = new JScrollPane(tablaAlimentos);
+        scrollAlimentos.setPreferredSize(new Dimension(400, getHeight())); // Ajustar el tamaño al 50%
         panelTablas.add(scrollAlimentos);
 
         tablaArticulos = new JTable();
         JScrollPane scrollArticulos = new JScrollPane(tablaArticulos);
+        scrollArticulos.setPreferredSize(new Dimension(400, getHeight())); // Ajustar el tamaño al 50%
         panelTablas.add(scrollArticulos);
 
         add(panelTablas, BorderLayout.CENTER);
@@ -118,6 +122,9 @@ public class ModificarDonacion extends JInternalFrame {
 
         // Cargar tablas
         cargarTablas();
+        
+        tablaAlimentos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tablaArticulos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         // Agregar Listeners
         btnGuardar.addActionListener(new ActionListener() {
@@ -134,19 +141,25 @@ public class ModificarDonacion extends JInternalFrame {
             }
         });
 
-        tablaAlimentos.getSelectionModel().addListSelectionListener(e -> {
-            int selectedRow = tablaAlimentos.getSelectedRow();
-            if (selectedRow >= 0) {
-                int id = (int) tablaAlimentos.getValueAt(selectedRow, 0);
-                cargarDonacion(id);
+        tablaAlimentos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int selectedRow = tablaAlimentos.getSelectedRow();
+                if (selectedRow >= 0) {
+                    int id = (int) tablaAlimentos.getValueAt(selectedRow, 0);
+                    cargarDonacion(id);
+                }
             }
         });
 
-        tablaArticulos.getSelectionModel().addListSelectionListener(e -> {
-            int selectedRow = tablaArticulos.getSelectedRow();
-            if (selectedRow >= 0) {
-                int id = (int) tablaArticulos.getValueAt(selectedRow, 0);
-                cargarDonacion(id);
+        tablaArticulos.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int selectedRow = tablaArticulos.getSelectedRow();
+                if (selectedRow >= 0) {
+                    int id = (int) tablaArticulos.getValueAt(selectedRow, 0);
+                    cargarDonacion(id);
+                }
             }
         });
     }
@@ -173,6 +186,9 @@ public class ModificarDonacion extends JInternalFrame {
                 txtCantidad.setText(String.valueOf(alimento.getCantElementos()));
                 txtPeso.setText("");
                 txtDimensiones.setText("");
+                txtCantidad.setVisible(true);
+                txtPeso.setVisible(false);
+                txtDimensiones.setVisible(false);
             } else if (donacion instanceof dtArticulo) {
                 dtArticulo articulo = (dtArticulo) donacion;
                 cmbTipoDonacion.setSelectedItem("Articulo");
@@ -180,6 +196,9 @@ public class ModificarDonacion extends JInternalFrame {
                 txtCantidad.setText(""); // Limpiar o deshabilitar si no se aplica
                 txtPeso.setText(String.valueOf(articulo.getPeso()));
                 txtDimensiones.setText(articulo.getDimensiones());
+                txtCantidad.setVisible(false);
+                txtPeso.setVisible(true);
+                txtDimensiones.setVisible(true);
             }
         }
     }
@@ -210,56 +229,90 @@ public class ModificarDonacion extends JInternalFrame {
         }
     }
 
-    private class DonacionTableModel extends AbstractTableModel {
-        private List<Donacion> donaciones;
-        private String[] columnNames = {"ID", "Descripción", "Cantidad/Peso", "Dimensiones"};
+private class DonacionTableModel extends AbstractTableModel {
+    private List<Donacion> donaciones;
+    private String[] columnNames = {"ID", "Descripción", "Cantidad/Peso", "Dimensiones"};
 
-        public DonacionTableModel(List<Donacion> donaciones) {
-            this.donaciones = donaciones;
-        }
-
-        @Override
-        public int getRowCount() {
-            return donaciones.size();
-        }
-
-        @Override
-        public int getColumnCount() {
-            return columnNames.length;
-        }
-
-        @Override
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            Donacion donacion = donaciones.get(rowIndex);
-            switch (columnIndex) {
-                case 0:
-                    return donacion.getId();
-                case 1:
-                    if (donacion instanceof Alimento) {
-                        return ((Alimento) donacion).getDescripcionProductos();
-                    } else if (donacion instanceof Articulo) {
-                        return ((Articulo) donacion).getDescripcion();
-                    }
-                    break;
-                case 2:
-                    if (donacion instanceof Alimento) {
-                        return ((Alimento) donacion).getCantElementos();
-                    } else if (donacion instanceof Articulo) {
-                        return ((Articulo) donacion).getPeso();
-                    }
-                    break;
-                case 3:
-                    if (donacion instanceof Articulo) {
-                        return ((Articulo) donacion).getDimensiones();
-                    }
-                    break;
-            }
-            return null;
-        }
-
-        @Override
-        public String getColumnName(int column) {
-            return columnNames[column];
-        }
+    public DonacionTableModel(List<Donacion> donaciones) {
+        this.donaciones = donaciones;
     }
+
+    @Override
+    public int getRowCount() {
+        return donaciones.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return columnNames.length;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Donacion donacion = donaciones.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return donacion.getId();
+            case 1:
+                if (donacion instanceof Alimento) {
+                    return ((Alimento) donacion).getDescripcionProductos();
+                } else if (donacion instanceof Articulo) {
+                    return ((Articulo) donacion).getDescripcion();
+                }
+                break;
+            case 2:
+                if (donacion instanceof Alimento) {
+                    return ((Alimento) donacion).getCantElementos();
+                } else if (donacion instanceof Articulo) {
+                    return ((Articulo) donacion).getPeso();
+                }
+                break;
+            case 3:
+                if (donacion instanceof Articulo) {
+                    return ((Articulo) donacion).getDimensiones();
+                }
+                break;
+        }
+        return null;
+    }
+
+    @Override
+    public void setValueAt(Object value, int rowIndex, int columnIndex) {
+        Donacion donacion = donaciones.get(rowIndex);
+        switch (columnIndex) {
+            case 1:
+                if (donacion instanceof Alimento) {
+                    ((Alimento) donacion).setDescripcionProductos((String) value);
+                } else if (donacion instanceof Articulo) {
+                    ((Articulo) donacion).setDescripcion((String) value);
+                }
+                break;
+            case 2:
+                if (donacion instanceof Alimento) {
+                    ((Alimento) donacion).setCantElementos(Integer.parseInt(value.toString()));
+                } else if (donacion instanceof Articulo) {
+                    ((Articulo) donacion).setPeso(Float.parseFloat(value.toString()));
+                }
+                break;
+            case 3:
+                if (donacion instanceof Articulo) {
+                    ((Articulo) donacion).setDimensiones((String) value);
+                }
+                break;
+        }
+        fireTableCellUpdated(rowIndex, columnIndex);
+    }
+
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        // Permitir la edición solo en las columnas correspondientes
+        return columnIndex == 1 || columnIndex == 2 || columnIndex == 3;
+    }
+
+    @Override
+    public String getColumnName(int column) {
+        return columnNames[column];
+    }
+}
+
 }

@@ -1,3 +1,5 @@
+package com.mycompany.pap1.presentacion;
+
 import com.mycompany.pap1.datatypes.dtAlimento;
 import com.mycompany.pap1.datatypes.dtArticulo;
 import com.mycompany.pap1.datatypes.dtDonacion;
@@ -79,8 +81,19 @@ public class AgregarDonacion extends JInternalFrame {
         btnLimpiar = new JButton("Limpiar");
         btnLimpiar.setBounds(270, 210, 100, 25);
         add(btnLimpiar);
+        
+        //esto no se ve al principio
+        txtPeso.setVisible(false);
+        txtDimensiones.setVisible(false);
 
         // EVENTOS
+        cmbTipoDonacion.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualizarCampos();
+            }
+        });
+        
         btnAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,35 +108,59 @@ public class AgregarDonacion extends JInternalFrame {
             }
         });
     }
-
+    private void actualizarCampos() {
+        String tipoDonacion = (String) cmbTipoDonacion.getSelectedItem();
+        if ("Alimento".equals(tipoDonacion)) {
+            txtCantidad.setVisible(true);
+            txtPeso.setVisible(false);
+            txtDimensiones.setVisible(false);
+        } else if ("Articulo".equals(tipoDonacion)) {
+            txtCantidad.setVisible(false);
+            txtPeso.setVisible(true);
+            txtDimensiones.setVisible(true);
+        }
+        // Redibuja el frame para aplicar cambios
+        repaint();
+    }
     private void agregarDonacion() {
         String tipoDonacion = (String) cmbTipoDonacion.getSelectedItem();
         String descripcion = txtDescripcion.getText();
-        String cantidadText = txtCantidad.getText();
-        String pesoText = txtPeso.getText();
-        String dimensiones = txtDimensiones.getText();
         LocalDate fecha = LocalDate.now();
+        dtDonacion donacion = null;
 
-        try {
+    try {
+        if ("Alimento".equals(tipoDonacion)) {
+            // Validación y conversión para Alimento
+            String cantidadText = txtCantidad.getText();
             int cantidad = Integer.parseInt(cantidadText);
-            double peso = Double.parseDouble(pesoText);
-            int id = dtDonacion.generarID();
 
-            dtDonacion donacion = null;
-            if ("Alimento".equals(tipoDonacion)) {
-                donacion = new dtAlimento(id, fecha, descripcion, cantidad);
-            } else if ("Articulo".equals(tipoDonacion)) {
-                donacion = new dtArticulo(id, fecha, descripcion, (float) peso, dimensiones);
-            }
-            if (donacion != null) {
-                controlador.agregarDonacion(donacion);
-                JOptionPane.showMessageDialog(this, "Donación agregada con éxito.");
-                limpiarCampos();
-            }
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Error en la cantidad o peso.", "Error", JOptionPane.ERROR_MESSAGE);
+            // Crear la donación de tipo Alimento
+            int id = dtDonacion.generarID();
+            donacion = new dtAlimento(id, fecha, descripcion, cantidad);
+
+        } else if ("Articulo".equals(tipoDonacion)) {
+            // Validación y conversión para Articulo
+            String pesoText = txtPeso.getText();
+            String dimensiones = txtDimensiones.getText();
+            double peso = Double.parseDouble(pesoText);
+
+            // Crear la donación de tipo Articulo
+            int id = dtDonacion.generarID();
+            donacion = new dtArticulo(id, fecha, descripcion, (float) peso, dimensiones);
         }
+
+        // Si la donación se creó correctamente, agregarla
+        if (donacion != null) {
+            controlador.agregarDonacion(donacion);
+            JOptionPane.showMessageDialog(this, "Donación agregada con éxito.");
+            limpiarCampos();
+        }
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Error en los datos numéricos (cantidad o peso).", "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Ocurrió un error al agregar la donación.", "Error", JOptionPane.ERROR_MESSAGE);
     }
+}
 
     private void limpiarCampos() {
         txtDescripcion.setText("");
