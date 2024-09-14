@@ -6,6 +6,7 @@ package com.mycompany.pap1.interfaces;
 
 
 import com.mycompany.pap1.datatypes.dtDonacion;
+import com.mycompany.pap1.logica.Donacion;
 
 /**
  *
@@ -15,6 +16,5 @@ public interface IControladorDonacion {
         public void modificarDonacion(int id, dtDonacion datosModificados);
         
         public void agregarDonacion(dtDonacion donacion);
-        
-        
+        dtDonacion buscarDonacionPorId(int id);
 }

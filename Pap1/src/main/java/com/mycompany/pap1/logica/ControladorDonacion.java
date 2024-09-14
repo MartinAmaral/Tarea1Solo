@@ -21,7 +21,8 @@ public class ControladorDonacion implements IControladorDonacion{
         super();
     }
     
-public void agregarDonacion(dtDonacion donacion) {
+    @Override
+    public void agregarDonacion(dtDonacion donacion) {
     Donacion nuevaDonacion = null;
 
     if (donacion instanceof dtAlimento) {
@@ -52,7 +53,8 @@ public void agregarDonacion(dtDonacion donacion) {
     System.out.println("Donacion registrada con exito.");
     }
 
-        public void modificarDonacion(int id, dtDonacion datosModificados) {
+    @Override
+    public void modificarDonacion(int id, dtDonacion datosModificados) {
         ManejadorDonacion mD = ManejadorDonacion.getInstancia();
         Donacion donacionExistente = mD.buscarDonacionPorId(id);
 
@@ -73,10 +75,27 @@ public void agregarDonacion(dtDonacion donacion) {
                 return;
             }
 
-            System.out.println("Donacion modificada con exito.");
+            System.out.println("Donación modificada con éxito.");
         } else {
-            System.out.println("Error: donacion no encontrada.");
+            System.out.println("Error: donación no encontrada.");
         }
+    }
+
+    @Override    
+    public dtDonacion buscarDonacionPorId(int id) {
+        ManejadorDonacion mD = ManejadorDonacion.getInstancia();
+        Donacion donacion = mD.buscarDonacionPorId(id);
+        if (donacion == null) {
+            return null;
+        }
+        if (donacion instanceof Alimento) {
+            Alimento alimento = (Alimento) donacion;
+            return new dtAlimento(alimento.getId(), alimento.getFechaIngresada(), alimento.getDescripcionProductos(), alimento.getCantElementos());
+        } else if (donacion instanceof Articulo) {
+            Articulo articulo = (Articulo) donacion;
+            return new dtArticulo(articulo.getId(), articulo.getFechaIngresada(), articulo.getDescripcion(), articulo.getPeso(), articulo.getDimensiones());
+        }
+        return null; 
     }
  }
 

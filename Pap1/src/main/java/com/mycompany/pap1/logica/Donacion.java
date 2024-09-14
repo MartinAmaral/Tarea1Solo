@@ -11,6 +11,7 @@ import java.time.LocalDate;
  * @author martin
  */
 public abstract class Donacion {
+    private static int contador = 0;
     int id;
     LocalDate fechaIngresada;
 
@@ -19,10 +20,13 @@ public abstract class Donacion {
     }
 
     public Donacion(int id, LocalDate fechaIngresada) {
-        this.id = id;
+        this.id = generarId();
         this.fechaIngresada = fechaIngresada;
     }
     
+    private static int generarId() {
+        return ++contador; 
+    }
     public int getId(){
         return id;
     }

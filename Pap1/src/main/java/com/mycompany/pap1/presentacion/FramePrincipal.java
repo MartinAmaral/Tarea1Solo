@@ -5,19 +5,63 @@
 
 package com.mycompany.pap1.presentacion;
 
+
+import com.mycompany.pap1.interfaces.IControladorDonacion;
+import com.mycompany.pap1.logica.ControladorDonacion;
+import java.awt.BorderLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+
 /**
  *
  * @author martin
  */
 public class FramePrincipal extends javax.swing.JFrame {
+    
+    private JDesktopPane desktopPane;
+
 
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
+        initCustomComponents();
+    }
+        private void initCustomComponents() {
+        // Inicializar el JDesktopPane
+        desktopPane = new JDesktopPane();
+        setContentPane(desktopPane);
+        desktopPane.setLayout(new BorderLayout());
+        
+        jMenuItem9.addActionListener(e -> mostrarModificarDonacion());
+        jMenuItem2.addActionListener(e -> mostrarAgregarDonacion());
+        
+
+        IControladorDonacion controlador = new ControladorDonacion();
+
+    }
+    private void mostrarAgregarDonacion() {
+    IControladorDonacion controlador = new ControladorDonacion();
+    AgregarDonacion agregarDonacionFrame = new AgregarDonacion(controlador);
+    desktopPane.add(agregarDonacionFrame);
+    agregarDonacionFrame.setVisible(true);
     }
 
+    private void mostrarModificarDonacion() {
+        IControladorDonacion controlador = new ControladorDonacion();
+        ModificarDonacion modificarDonacionFrame = new ModificarDonacion(controlador);
+        desktopPane.add(modificarDonacionFrame);
+        modificarDonacionFrame.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -108,16 +152,16 @@ public class FramePrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(159, 159, 159)
+                .addGap(172, 172, 172)
                 .addComponent(jLabel1)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel1)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,6 +201,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

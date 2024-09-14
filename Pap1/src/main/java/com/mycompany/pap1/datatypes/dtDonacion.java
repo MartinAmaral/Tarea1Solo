@@ -14,10 +14,15 @@ import java.time.LocalDate;
 public abstract class dtDonacion {
     private int id;
     private LocalDate fechaIngresada;
+    private static int contadorID = 0;
 
     public dtDonacion(int id, LocalDate fechaIngresada) {
         this.id = id;
         this.fechaIngresada = fechaIngresada;
+    }
+    
+    public static int generarID() {
+        return ++contadorID;
     }
 
     public int getId() {
