@@ -5,11 +5,8 @@
 package com.mycompany.pap1.logica;
 
 
-import com.mycompany.pap1.datatypes.dtBeneficiario;
 import com.mycompany.pap1.interfaces.IControladorUsuario;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -25,13 +22,6 @@ public class ControladorUsuario implements IControladorUsuario {
     private Barrio altaUsuarioBarrio;
     private int altaUsuarioLicencia;
     
-    private static ControladorUsuario instancia = null;
-    
-    public static ControladorUsuario getInstancia(){
-            if (instancia == null)
-                instancia = new ControladorUsuario();
-            return instancia;
-    }
     
     @Override
     public boolean ExisteUsuario(String email) {
@@ -73,7 +63,8 @@ public class ControladorUsuario implements IControladorUsuario {
     @Override
     public void ConfirmarAltaRepartidor() {
         var m = ManejadorUsuario.getInstancia();
-        m.usuarios.add(new Repartidor(altaUsuarioNombre,altaUsuarioEmail,altaUsuarioLicencia));
+        m.usuarios.add(new Repartidor(altaUsuarioNombre,altaUsuarioEmail,altaUsuarioLicencia)  
+                );
     }
 
     @Override
@@ -83,23 +74,4 @@ public class ControladorUsuario implements IControladorUsuario {
         altaUsuarioDireccion = "";
         altaUsuarioLicencia = 0;
     }
-
-    @Override
-    public List<dtBeneficiario> GetBeneficiarios() {
-        var res = new ArrayList<dtBeneficiario>();
-        var m = ManejadorUsuario.getInstancia();
-        var usuarios = m.usuarios;
-        
-        for (Usuario usuario : usuarios) {
-            if (usuario instanceof Beneficiario) {
-                Beneficiario b = (Beneficiario) usuario;
-                res.add(new dtBeneficiario(b.getNombre(),b.getEmail(),b.getDireccion(),
-                    b.getFechaNacimiento(),b.getEstado(),b.getBarrio()));
-            } 
-        }
-        
-        return res;
-    }
-    
-    
 }
