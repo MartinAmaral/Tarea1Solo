@@ -4,12 +4,9 @@
  */
 package com.mycompany.pap1.interfaces;
 
-import com.mycompany.pap1.datatypes.dtBeneficiario;
 import com.mycompany.pap1.logica.Barrio;
 import com.mycompany.pap1.logica.EstadoBeneficiario;
-
 import java.time.LocalDate;
-import java.util.List;
 
 
 /**
@@ -29,8 +26,7 @@ public interface IControladorUsuario {
     void ConfirmarAltaRepartidor();
     void CancelartAlta();
     
-    // Listar Beneficiarios
+    // Caso Modificar Usuario
     
-    List<dtBeneficiario> GetBeneficiarios();
     
 }

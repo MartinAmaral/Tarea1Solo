@@ -8,43 +8,31 @@ import java.util.List;
 import com.mycompany.pap1.logica.EstadoBeneficiario;
 import com.mycompany.pap1.logica.Barrio;
 import com.mycompany.pap1.logica.Distribucion;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  *
  * @author horacio
  */
 public class dtBeneficiario {
-    private String nombre;
-    private String email;
     private String direccion;
-    private LocalDate fechaNacimiento;
+    private int fechaNacimiento;
     private EstadoBeneficiario estado;
     private Barrio barrio;
     private List<Distribucion> distribuciones;
 
-    public dtBeneficiario(String nombre,String email, String direccion, LocalDate fechaNacimiento, EstadoBeneficiario estado,
-                Barrio barrio) {
-        this.nombre = nombre;
-        this.email = email;
+    public dtBeneficiario(String direccion, int fechaNacimiento, EstadoBeneficiario estado, Barrio barrio) {
         this.direccion = direccion;
         this.fechaNacimiento = fechaNacimiento;
         this.estado = estado;
         this.barrio = barrio;
-        this.distribuciones = new ArrayList<>();
     }
-    public String getNombre(){
-        return nombre;
-    }
-    public String getEmail(){
-        return email;
-    }
+
     
+        
     public String getDireccion(){
         return direccion;
     }
-    public LocalDate getFechaNacimiento(){
+    public int getFechaNacimiento(){
         return fechaNacimiento;
     }
     public EstadoBeneficiario getEstado(){
@@ -57,7 +45,7 @@ public class dtBeneficiario {
     public void setDirecion(String direccion){
         this.direccion = direccion;
     }
-    public void setFechaNacimiento(LocalDate fecha){
+    public void setFechaNacimiento(int fecha){
         fechaNacimiento = fecha;
     }
     public void setEstado(EstadoBeneficiario estado){
@@ -66,7 +54,6 @@ public class dtBeneficiario {
     public void setBarrio(Barrio barrio){
         this.barrio = barrio;
     }
-   
       
 }
 
