@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia = null;
-    private List<Usuario> usuarios = new ArrayList<>();
+    public List<Usuario> usuarios = new ArrayList<>();
     
     private ManejadorUsuario(){}
     
@@ -23,4 +23,5 @@ public class ManejadorUsuario {
                 instancia = new ManejadorUsuario();
             return instancia;
     }
+    
 }

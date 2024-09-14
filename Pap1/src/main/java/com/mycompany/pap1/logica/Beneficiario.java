@@ -4,6 +4,8 @@
  */
 package com.mycompany.pap1.logica;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 /**
  *
@@ -11,19 +13,27 @@ import java.util.List;
  */
 public class Beneficiario extends Usuario {
     private String direccion;
-    private int fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private EstadoBeneficiario estado;
     private Barrio barrio;
     private List<Distribucion> distribuciones;
 
-    public Beneficiario() {
-        super();
+    public Beneficiario(String nombre, String email, String direccion, LocalDate fechaNacimiento, EstadoBeneficiario estado, Barrio barrio) {
+        
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.fechaNacimiento = fechaNacimiento;
+        this.estado = estado;
+        this.barrio = barrio;
+        this.distribuciones = new ArrayList<>();
     }
+
         
     public String getDireccion(){
         return direccion;
     }
-    public int getFechaNacimiento(){
+    public LocalDate getFechaNacimiento(){
         return fechaNacimiento;
     }
     public EstadoBeneficiario getEstado(){
@@ -36,7 +46,7 @@ public class Beneficiario extends Usuario {
     public void setDirecion(String direccion){
         this.direccion = direccion;
     }
-    public void setFechaNacimiento(int fecha){
+    public void setFechaNacimiento(LocalDate fecha){
         fechaNacimiento = fecha;
     }
     public void setEstado(EstadoBeneficiario estado){
