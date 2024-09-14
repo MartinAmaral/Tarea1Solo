@@ -10,8 +10,8 @@ package com.mycompany.pap1.logica;
  * @author martin
  */
 abstract class Usuario {
-    private String nombre;
-    private String email;
+    protected String nombre;
+    protected String email;
 
     public Usuario() {
         super();

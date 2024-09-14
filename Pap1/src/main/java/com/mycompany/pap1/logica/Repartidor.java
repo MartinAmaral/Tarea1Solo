@@ -10,16 +10,19 @@ package com.mycompany.pap1.logica;
  * @author horacio
  */
 public class Repartidor extends Usuario {
-    private String numeroLicencia;
 
-    public Repartidor() {
-        super();
+    private int numeroLicencia;
+    public Repartidor(String nombre, String email,  int numeroLicencia) {
+        this.nombre = nombre;
+        this.email = email;
+        this.numeroLicencia = numeroLicencia;
     }
     
-    public String getnumeroLicencia(){
+
+    public int getnumeroLicencia(){
         return numeroLicencia;
     }
-    public void setnumeroLicencia(String numeroLicencia){
+    public void setnumeroLicencia(int numeroLicencia){
         this.numeroLicencia = numeroLicencia;
     }
 }
