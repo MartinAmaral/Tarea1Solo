@@ -5,13 +5,13 @@
 package com.mycompany.pap1.presentacion;
 
 import com.mycompany.pap1.fabricas.FabricaCUsuario;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JInternalFrame;
 
 /**
  *
  * @author martin
  */
-public class ListarBeneficiarios extends javax.swing.JFrame {
+public class ListarBeneficiarios extends JInternalFrame {
 
     /**
      * Creates new form ListarBeneficiarios
@@ -96,7 +96,7 @@ public class ListarBeneficiarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //salir al inicio
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
