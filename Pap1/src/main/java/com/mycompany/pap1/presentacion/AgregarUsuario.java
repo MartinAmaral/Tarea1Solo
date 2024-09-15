@@ -5,13 +5,15 @@
 package com.mycompany.pap1.presentacion;
 
 import com.mycompany.pap1.fabricas.FabricaCUsuario;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author martin
  */
-public class AgregarUsuario extends javax.swing.JFrame {
+public class AgregarUsuario extends JInternalFrame {
 
     /**
      * Creates new form AgregarUsuario
@@ -185,11 +187,28 @@ public class AgregarUsuario extends javax.swing.JFrame {
             
             FabricaCUsuario.getControlador().AgregarDatosAltaUsuario(TextNombre.getText(),mail);
             
-            if(RadioBeneficiario.isSelected()){
-               //mostrar ingresar beneficiario
-            }
-            // else mostrar ingresar repartidor
+        if (RadioBeneficiario.isSelected()) {
+            // Mostrar el frame AgregarBeneficiario
+            AgregarBeneficiario agregarBeneficiario = new AgregarBeneficiario();
+            agregarBeneficiario.setVisible(true);
             
+            JDesktopPane desktopPane = getDesktopPane(); 
+            if (desktopPane != null) {
+                desktopPane.add(agregarBeneficiario);
+                agregarBeneficiario.setSelected(true);
+                agregarBeneficiario.setVisible(true);
+            }
+        } else {
+            AgregarRepartidor agregarRepartidor = new AgregarRepartidor();
+            agregarRepartidor.setVisible(true);
+            
+            JDesktopPane desktopPane = getDesktopPane();
+            if (desktopPane != null) {
+                desktopPane.add(agregarRepartidor);
+                agregarRepartidor.setSelected(true);
+                agregarRepartidor.setVisible(true);
+            }
+        }
         }catch (Exception e) {
             JOptionPane.showMessageDialog(null, 
             mensaje, 
@@ -208,7 +227,7 @@ public class AgregarUsuario extends javax.swing.JFrame {
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         FabricaCUsuario.getControlador().CancelartAlta();
-        //volver al incio
+        this.dispose();
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     /**
