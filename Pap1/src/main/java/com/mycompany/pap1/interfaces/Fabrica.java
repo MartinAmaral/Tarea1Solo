@@ -9,5 +9,5 @@ package com.mycompany.pap1.interfaces;
  * @author horacio
  */
 public interface Fabrica {
-    
+
 }

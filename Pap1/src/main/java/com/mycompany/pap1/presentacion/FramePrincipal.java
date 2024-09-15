@@ -46,6 +46,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem2.addActionListener(e -> mostrarAgregarDonacion());
         jMenuItem1.addActionListener(e -> mostrarAgregarUsuario());
         jMenuItem4.addActionListener(e -> mostrarListarBeneficiarios());
+        jMenuItem7.addActionListener(e -> mostrarListarDistribucionesEstado());
 
         IControladorDonacion controlador = new ControladorDonacion();
 
@@ -70,10 +71,17 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
     
     private void mostrarListarBeneficiarios() {
-        var modificarDonacionFrame = new ListarBeneficiarios();
-        desktopPane.add(modificarDonacionFrame);
-        modificarDonacionFrame.setVisible(true);
+        var panel = new ListarBeneficiarios();
+        desktopPane.add(panel);
+        panel.setVisible(true);
     }
+    
+    private void mostrarListarDistribucionesEstado() {
+        var panel = new ListarDistribucionesEstado();
+        desktopPane.add(panel);
+        panel.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
