@@ -30,6 +30,7 @@ public class ListarBeneficiarios extends JInternalFrame {
             data[index][3] = b.getFechaNacimiento().toString();
             data[index][4] = b.getEstado().toString();
             data[index][5] = b.getBarrio().toString();
+            index ++;
         }
         jTable1.setModel(new javax.swing.table.DefaultTableModel(data,columnas));
     }
