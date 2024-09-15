@@ -6,7 +6,7 @@ import javax.swing.*;
  *
  * @author martin
  */
-public class AgregarRepartidor extends javax.swing.JFrame {
+public class AgregarRepartidor extends JInternalFrame {
 
     /**
      * Creates new form AgregarRepartidor
@@ -67,8 +67,8 @@ public class AgregarRepartidor extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(47, 47, 47)
-                                .addComponent(LicenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(LicenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ButtonAceptar)
                                 .addGap(64, 64, 64)
@@ -125,7 +125,7 @@ public class AgregarRepartidor extends javax.swing.JFrame {
 
     private void ButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCancelarActionPerformed
         FabricaCUsuario.getControlador().CancelartAlta();
-        //volver al incio
+        this.dispose();
     }//GEN-LAST:event_ButtonCancelarActionPerformed
 
     /**
