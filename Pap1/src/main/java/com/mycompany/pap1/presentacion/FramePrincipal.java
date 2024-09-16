@@ -47,6 +47,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem1.addActionListener(e -> mostrarAgregarUsuario());
         jMenuItem4.addActionListener(e -> mostrarListarBeneficiarios());
         jMenuItem7.addActionListener(e -> mostrarListarDistribucionesEstado());
+        jMenuItem10.addActionListener(e -> mostrarModificarDistribucion());
 
         IControladorDonacion controlador = new ControladorDonacion();
 
@@ -78,6 +79,12 @@ public class FramePrincipal extends javax.swing.JFrame {
     
     private void mostrarListarDistribucionesEstado() {
         var panel = new ListarDistribucionesEstado();
+        desktopPane.add(panel);
+        panel.setVisible(true);
+    }
+    
+    private void mostrarModificarDistribucion() {
+        var panel = new ModificarDistribucion();
         desktopPane.add(panel);
         panel.setVisible(true);
     }

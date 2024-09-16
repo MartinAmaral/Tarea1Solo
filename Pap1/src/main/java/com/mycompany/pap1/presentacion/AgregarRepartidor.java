@@ -110,6 +110,8 @@ public class AgregarRepartidor extends JInternalFrame {
             "Usuario ingresado con Exito!", 
             "Usuario creado", 
             JOptionPane.PLAIN_MESSAGE);
+            
+            this.dispose();
 
         }catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, 

@@ -22,6 +22,7 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtBeneficiario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarUsuario.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/ModificarDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ControladorDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ControladorUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ManejadorDonacion.java

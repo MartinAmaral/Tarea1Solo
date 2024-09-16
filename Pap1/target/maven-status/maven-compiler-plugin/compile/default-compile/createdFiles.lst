@@ -7,6 +7,7 @@ com/mycompany/pap1/presentacion/AgregarDonacion$1.class
 com/mycompany/pap1/presentacion/ModificarDonacion$1.class
 com/mycompany/pap1/presentacion/ListarBeneficiarios.class
 com/mycompany/pap1/datatypes/dtArticulo.class
+com/mycompany/pap1/presentacion/ModificarDistribucion$2.class
 com/mycompany/pap1/logica/EstadoDistribucion.class
 com/mycompany/pap1/presentacion/AgregarRepartidor$3.class
 com/mycompany/pap1/presentacion/ModificarDonacion$DonacionTableModel.class
@@ -20,6 +21,7 @@ com/mycompany/pap1/presentacion/AgregarUsuario$6.class
 com/mycompany/pap1/presentacion/ListarDistribucionesEstado$1.class
 com/mycompany/pap1/presentacion/AgregarUsuario.class
 com/mycompany/pap1/fabricas/FabricaCDistribucion.class
+com/mycompany/pap1/presentacion/ModificarDistribucion$1.class
 com/mycompany/pap1/interfaces/IControladorDonacion.class
 com/mycompany/pap1/logica/ControladorDonacion.class
 com/mycompany/pap1/datatypes/dtAlimento.class
@@ -27,6 +29,7 @@ com/mycompany/pap1/datatypes/dtDonacion.class
 com/mycompany/pap1/interfaces/Fabrica.class
 com/mycompany/pap1/datatypes/dtDistribucion.class
 com/mycompany/pap1/presentacion/ListarBeneficiarios$2.class
+com/mycompany/pap1/presentacion/ModificarDistribucion.class
 com/mycompany/pap1/logica/Beneficiario.class
 com/mycompany/pap1/logica/Donacion.class
 com/mycompany/pap1/logica/Alimento.class
@@ -42,6 +45,7 @@ com/mycompany/pap1/presentacion/AgregarUsuario$5.class
 com/mycompany/pap1/presentacion/ListarDistribucionesEstado$2.class
 com/mycompany/pap1/presentacion/AgregarRepartidor$1.class
 com/mycompany/pap1/fabricas/FabricaCUsuario.class
+com/mycompany/pap1/presentacion/ModificarDistribucion$4.class
 com/mycompany/pap1/logica/ControladorUsuario.class
 com/mycompany/pap1/interfaces/IControladorUsuario.class
 com/mycompany/pap1/datatypes/dtUsuario.class
@@ -60,5 +64,6 @@ com/mycompany/pap1/presentacion/AgregarUsuario$4.class
 com/mycompany/pap1/presentacion/ModificarDonacion$2.class
 com/mycompany/pap1/datatypes/dtBeneficiario.class
 com/mycompany/pap1/logica/ManejadorUsuario.class
+com/mycompany/pap1/presentacion/ModificarDistribucion$3.class
 com/mycompany/pap1/presentacion/ListarDistribucionesEstado$3.class
 com/mycompany/pap1/presentacion/AgregarRepartidor$2.class

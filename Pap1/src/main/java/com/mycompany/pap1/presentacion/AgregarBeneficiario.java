@@ -189,6 +189,8 @@ public class AgregarBeneficiario extends JInternalFrame {
         "Éxito", 
         JOptionPane.INFORMATION_MESSAGE);
         
+        this.dispose();
+        
     } catch (Exception e) {
         e.printStackTrace(); // Para ver la traza del error
         JOptionPane.showMessageDialog(null, 
