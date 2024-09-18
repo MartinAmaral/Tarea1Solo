@@ -9,16 +9,7 @@ package com.mycompany.pap1.presentacion;
 import com.mycompany.pap1.interfaces.IControladorDonacion;
 import com.mycompany.pap1.logica.ControladorDonacion;
 import java.awt.BorderLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -42,14 +33,12 @@ public class FramePrincipal extends javax.swing.JFrame {
         setContentPane(desktopPane);
         desktopPane.setLayout(new BorderLayout());
         
-        jMenuItem9.addActionListener(e -> mostrarModificarDonacion());
         jMenuItem2.addActionListener(e -> mostrarAgregarDonacion());
         jMenuItem1.addActionListener(e -> mostrarAgregarUsuario());
         jMenuItem4.addActionListener(e -> mostrarListarBeneficiarios());
         jMenuItem7.addActionListener(e -> mostrarListarDistribucionesEstado());
         jMenuItem10.addActionListener(e -> mostrarModificarDistribucion());
 
-        IControladorDonacion controlador = new ControladorDonacion();
 
     }
     private void mostrarAgregarUsuario() {
@@ -58,17 +47,9 @@ public class FramePrincipal extends javax.swing.JFrame {
         agregarUsuarioFrame.setVisible(true);
     }
     private void mostrarAgregarDonacion() {
-    IControladorDonacion controlador = new ControladorDonacion();
-    AgregarDonacion agregarDonacionFrame = new AgregarDonacion(controlador);
-    desktopPane.add(agregarDonacionFrame);
-    agregarDonacionFrame.setVisible(true);
-    }
-
-    private void mostrarModificarDonacion() {
-        IControladorDonacion controlador = new ControladorDonacion();
-        ModificarDonacion modificarDonacionFrame = new ModificarDonacion(controlador);
-        desktopPane.add(modificarDonacionFrame);
-        modificarDonacionFrame.setVisible(true);
+        var panel = new AgregarDonacion();
+        desktopPane.add(panel);
+        panel.setVisible(true);
     }
     
     private void mostrarListarBeneficiarios() {

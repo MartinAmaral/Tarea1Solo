@@ -13,10 +13,12 @@ import javax.swing.JOptionPane;
 
 public class AgregarBeneficiario extends JInternalFrame {
 
+    JInternalFrame frameUsuario;
     /**
      * Creates new form AgregarBeneficiario
      */
-    public AgregarBeneficiario() {
+    public AgregarBeneficiario(JInternalFrame frameUsuario) {
+        this.frameUsuario = frameUsuario;
         initComponents();
         ComboBoxBarrio.removeAllItems();
         for (Barrio barrio : Barrio.values()) {
@@ -158,6 +160,11 @@ public class AgregarBeneficiario extends JInternalFrame {
             throw new Exception();
         }
         
+        if(ano <1900 || ano >2024){
+            mensaje = "Ano invalido";
+            throw new Exception();
+        }
+        
         if((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30){
             mensaje = "Día inválido";
             throw new Exception();
@@ -188,11 +195,10 @@ public class AgregarBeneficiario extends JInternalFrame {
         "Beneficiario guardado exitosamente", 
         "Éxito", 
         JOptionPane.INFORMATION_MESSAGE);
-        
+        frameUsuario.dispose();
         this.dispose();
         
     } catch (Exception e) {
-        e.printStackTrace(); // Para ver la traza del error
         JOptionPane.showMessageDialog(null, 
         mensaje, 
         "Error", 
@@ -206,41 +212,6 @@ public class AgregarBeneficiario extends JInternalFrame {
         FabricaCUsuario.getControlador().CancelartAlta();
         this.dispose();
     }//GEN-LAST:event_ButtonCancelarActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarBeneficiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarBeneficiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarBeneficiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarBeneficiario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AgregarBeneficiario().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCancelar;
