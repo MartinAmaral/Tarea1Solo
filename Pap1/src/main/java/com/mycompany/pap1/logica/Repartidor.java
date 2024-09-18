@@ -4,8 +4,8 @@
  */
 package com.mycompany.pap1.logica;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 
 /**
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @author horacio
  */
 @Entity
-@Table(name = "repartidor")
+@DiscriminatorValue("R")
 public class Repartidor extends Usuario {
 
     private int numeroLicencia;
@@ -21,8 +21,6 @@ public class Repartidor extends Usuario {
     public Repartidor() {
         super();
     }
-    
-    
     
     public Repartidor(String nombre, String email,  int numeroLicencia) {
         this.nombre = nombre;

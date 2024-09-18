@@ -9,6 +9,11 @@
 
         <class>com.mycompany.pap1.logica.Usuario</class>
         <class>com.mycompany.pap1.logica.Repartidor</class>
+        <class>com.mycompany.pap1.logica.Beneficiario</class>
+        <class>com.mycompany.pap1.logica.Donacion</class>
+        <class>com.mycompany.pap1.logica.Articulo</class>
+        <class>com.mycompany.pap1.logica.Alimento</class>
+        <class>com.mycompany.pap1.logica.Distribucion</class>
 
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/postgres"/>
@@ -16,7 +21,7 @@
             <property name="javax.persistence.jdbc.password" value="pass"/>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
     </persistence-unit>
 </persistence>

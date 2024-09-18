@@ -47,11 +47,12 @@ public class ControladorDonacion implements IControladorDonacion{
 
     @Override
     public void ConfirmarAltaAlimento() {
-        
+        ManejadorDonacion.getInstancia().agregarDonacion(new Alimento(descripcionAlimento,cantidadAlimento,fecha));
     }
 
     @Override
     public void ConfirmarAltaArticulo() {
+        ManejadorDonacion.getInstancia().agregarDonacion(new Articulo(descipcionArticulo,peso,dimensiones,fecha));
     
     }
     

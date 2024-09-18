@@ -5,18 +5,27 @@
 package com.mycompany.pap1.logica;
 
 import java.time.LocalDate;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 /**
  *
  * @author martin
  */
+@Entity
+@DiscriminatorValue("Art")
 public class Articulo extends Donacion {
     
     private String descripcion;
     private float peso;
     private String dimensiones;
 
-    public Articulo(String descripcion, float peso, String dimensiones, int id, LocalDate fechaIngresada) {
-        super(id, fechaIngresada);
+    public Articulo() {
+        super();
+    }
+   
+
+    public Articulo(String descripcion, float peso, String dimensiones, LocalDate fechaIngresada) {
+        this.fechaIngresada = fechaIngresada;
         this.descripcion = descripcion;
         this.peso = peso;
         this.dimensiones = dimensiones;

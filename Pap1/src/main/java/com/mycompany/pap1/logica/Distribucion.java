@@ -4,36 +4,60 @@
  */
 package com.mycompany.pap1.logica;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 /**
  *
  * @author martin
  */
-public class Distribucion {
-    private int fechaPreparacion;
-    private int fechaEntrega;
+
+@Entity
+@Table(name = "distribuciones")
+@IdClass(DistribucionID.class)
+public class Distribucion implements Serializable{
+    private LocalDate fechaPreparacion;
+    private LocalDate fechaEntrega;
+    
+    @Enumerated(EnumType.STRING)
     private EstadoDistribucion estado;
     
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "email", referencedColumnName = "email", nullable = false)
     private Beneficiario beneficiario;
+
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
     private Donacion donacion;
 
     public Distribucion() {
         super();
     }
     
-    public int getFechaPreparacion(){
+    public LocalDate getFechaPreparacion(){
         return fechaPreparacion;
     }
-    public int getFechaEntrega(){
+    public LocalDate getFechaEntrega(){
         return fechaEntrega;
     }
     public EstadoDistribucion getEstadoDistribucion(){
         return estado;
     }
     
-    public void setFechaPreparacion(int fecha){
+    public void setFechaPreparacion(LocalDate fecha){
         fechaPreparacion = fecha;
     }
-    public void setFechaEntrega(int fecha){
+    public void setFechaEntrega(LocalDate fecha){
         fechaEntrega = fecha;
     }
     public void setEstadoDistribucion(EstadoDistribucion estado){
