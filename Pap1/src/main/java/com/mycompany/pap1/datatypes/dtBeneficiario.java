@@ -53,19 +53,11 @@ public class dtBeneficiario {
     public Barrio getBarrio(){
         return barrio;
     }
+
+    public List<Distribucion> getDistribuciones() {
+        return distribuciones;
+    }
     
-    public void setDirecion(String direccion){
-        this.direccion = direccion;
-    }
-    public void setFechaNacimiento(LocalDate fecha){
-        fechaNacimiento = fecha;
-    }
-    public void setEstado(EstadoBeneficiario estado){
-        this.estado = estado;
-    }
-    public void setBarrio(Barrio barrio){
-        this.barrio = barrio;
-    }
    
       
 }

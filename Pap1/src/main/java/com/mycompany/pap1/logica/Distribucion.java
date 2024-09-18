@@ -44,6 +44,7 @@ public class Distribucion implements Serializable{
         super();
     }
     
+    
     public LocalDate getFechaPreparacion(){
         return fechaPreparacion;
     }
@@ -54,13 +55,39 @@ public class Distribucion implements Serializable{
         return estado;
     }
     
-    public void setFechaPreparacion(LocalDate fecha){
-        fechaPreparacion = fecha;
+    public void setFechaPreparacion(LocalDate fechapreparacion){
+        fechaPreparacion = fechapreparacion;
     }
-    public void setFechaEntrega(LocalDate fecha){
-        fechaEntrega = fecha;
+    public void setFechaEntrega(LocalDate fechaentrega){
+        fechaEntrega = fechaentrega;
     }
     public void setEstadoDistribucion(EstadoDistribucion estado){
         this.estado = estado;
     }
+
+    public EstadoDistribucion getEstado() {
+        return estado;
+    }
+
+    public Beneficiario getBeneficiario() {
+        return beneficiario;
+    }
+
+    public Donacion getDonacion() {
+        return donacion;
+    }
+
+    public void setEstado(EstadoDistribucion estado) {
+        this.estado = estado;
+    }
+
+    public void setBeneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
+    }
+
+    public void setDonacion(Donacion donacion) {
+        this.donacion = donacion;
+    }
+    
+    
 }

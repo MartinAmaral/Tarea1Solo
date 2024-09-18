@@ -1,4 +1,3 @@
-com/mycompany/pap1/presentacion/AgregarUsuario$7.class
 com/mycompany/pap1/presentacion/FramePrincipal.class
 com/mycompany/pap1/presentacion/AgregarBeneficiario$2.class
 com/mycompany/pap1/logica/Articulo.class
@@ -28,7 +27,7 @@ com/mycompany/pap1/datatypes/dtDonacion.class
 com/mycompany/pap1/interfaces/Fabrica.class
 com/mycompany/pap1/presentacion/AgregarAlimento$2.class
 com/mycompany/pap1/datatypes/dtDistribucion.class
-com/mycompany/pap1/presentacion/ListarBeneficiarios$2.class
+com/mycompany/pap1/presentacion/FramePrincipal$2.class
 com/mycompany/pap1/presentacion/ModificarDistribucion.class
 com/mycompany/pap1/logica/Beneficiario.class
 com/mycompany/pap1/logica/Donacion.class
@@ -64,5 +63,5 @@ com/mycompany/pap1/presentacion/AgregarUsuario$4.class
 com/mycompany/pap1/datatypes/dtBeneficiario.class
 com/mycompany/pap1/logica/ManejadorUsuario.class
 com/mycompany/pap1/presentacion/ModificarDistribucion$3.class
-com/mycompany/pap1/presentacion/ListarDistribucionesEstado$3.class
+com/mycompany/pap1/presentacion/AgregarDistribucion$3.class
 com/mycompany/pap1/presentacion/AgregarRepartidor$2.class

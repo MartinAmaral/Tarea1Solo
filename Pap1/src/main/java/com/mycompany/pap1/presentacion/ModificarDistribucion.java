@@ -31,14 +31,15 @@ public class ModificarDistribucion extends JInternalFrame {
         
         distribuciones = FabricaCDistribucion.getControlador().getTodasDistribuciones();
         
-        String[] distri = new String[distribuciones.size() +2];
+        String[] distri = new String[distribuciones.size() +1];
         
         distri[0] = "<>";
         int index = 1;
         
         for (var d : distribuciones) {
             String g = d.getFechaEntrega().toString() + " " + d.getEstadoDistribucion().toString() + " " + d.getFechaPreparacion().toString();
-            ComboBoxDistribucion.addItem(g);
+            distri[index] =g;
+            index ++;
         }
        
         for (var d : distri) {

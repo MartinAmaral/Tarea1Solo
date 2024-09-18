@@ -7,6 +7,7 @@ package com.mycompany.pap1.interfaces;
 import com.mycompany.pap1.datatypes.dtBeneficiario;
 import com.mycompany.pap1.logica.Barrio;
 import com.mycompany.pap1.logica.EstadoBeneficiario;
+import com.mycompany.pap1.logica.Usuario;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,5 +33,7 @@ public interface IControladorUsuario {
     // Listar Beneficiarios
     
     List<dtBeneficiario> GetBeneficiarios();
+    List<String> GetEmailBeneficiarios();
+    List<Usuario> GetUsuarios();
     
 }

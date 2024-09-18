@@ -5,7 +5,9 @@
 package com.mycompany.pap1.interfaces;
 
 
+import com.mycompany.pap1.logica.Donacion;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -21,5 +23,6 @@ public interface IControladorDonacion {
         public void ConfirmarAltaArticulo();
         
         //
-        
+        public List<Donacion> GetDonaciones();
+        public List<Integer> GetIdDonaciones();
 }

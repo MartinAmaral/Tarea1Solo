@@ -86,16 +86,32 @@ public class ControladorUsuario implements IControladorUsuario {
 
     @Override
     public List<dtBeneficiario> GetBeneficiarios() {
-        var res = new ArrayList<dtBeneficiario>();
-        var m = ManejadorUsuario.getInstancia();
-        var usuarios = m.GetUsuarios();
+        var b = ManejadorUsuario.getInstancia().GetBeneficiarios();
         
-        for (Usuario usuario : usuarios) {
-            if (usuario instanceof Beneficiario) {
-                Beneficiario b = (Beneficiario) usuario;
-                res.add(new dtBeneficiario(b.getNombre(),b.getEmail(),b.getDireccion(),
-                    b.getFechaNacimiento(),b.getEstado(),b.getBarrio()));
-            } 
+        List<dtBeneficiario> l = new ArrayList<>();
+        
+        for (var ben : b) {
+            
+            l.add(new dtBeneficiario(ben.getNombre(),ben.getEmail(),ben.getDireccion(),
+                    ben.getFechaNacimiento(),ben.getEstado(),ben.getBarrio()));
+        }
+        return l;
+    }
+    
+    @Override
+    public List<Usuario> GetUsuarios(){
+        return ManejadorUsuario.getInstancia().GetUsuarios();
+    
+    }
+
+    @Override
+    public List<String> GetEmailBeneficiarios() {
+        var x = ManejadorUsuario.getInstancia().GetUsuarios();
+        var res = new ArrayList<String>();
+        
+        for(var f : x){
+            res.add(f.getEmail());
+            
         }
         
         return res;

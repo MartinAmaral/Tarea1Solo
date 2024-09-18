@@ -6,8 +6,6 @@
 package com.mycompany.pap1.presentacion;
 
 
-import com.mycompany.pap1.interfaces.IControladorDonacion;
-import com.mycompany.pap1.logica.ControladorDonacion;
 import java.awt.BorderLayout;
 import javax.swing.JDesktopPane;
 
@@ -38,8 +36,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenuItem4.addActionListener(e -> mostrarListarBeneficiarios());
         jMenuItem7.addActionListener(e -> mostrarListarDistribucionesEstado());
         jMenuItem10.addActionListener(e -> mostrarModificarDistribucion());
-
-
+        jMenuItem3.addActionListener(e -> mostrarAgregarDistribucion());
     }
     private void mostrarAgregarUsuario() {
         AgregarUsuario agregarUsuarioFrame = new AgregarUsuario();
@@ -66,6 +63,12 @@ public class FramePrincipal extends javax.swing.JFrame {
     
     private void mostrarModificarDistribucion() {
         var panel = new ModificarDistribucion();
+        desktopPane.add(panel);
+        panel.setVisible(true);
+    }
+    
+    private void mostrarAgregarDistribucion(){
+        var panel = new AgregarDistribucion();
         desktopPane.add(panel);
         panel.setVisible(true);
     }
@@ -114,6 +117,11 @@ public class FramePrincipal extends javax.swing.JFrame {
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setText("Distribucion");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -160,20 +168,24 @@ public class FramePrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
+                .addGap(207, 207, 207)
                 .addComponent(jLabel1)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(22, 22, 22)
                 .addComponent(jLabel1)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addContainerGap(340, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments

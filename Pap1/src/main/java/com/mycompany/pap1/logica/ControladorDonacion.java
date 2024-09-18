@@ -4,8 +4,11 @@
  */
 package com.mycompany.pap1.logica;
 
+import com.mycompany.pap1.datatypes.dtDonacion;
 import com.mycompany.pap1.interfaces.IControladorDonacion;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ControladorDonacion implements IControladorDonacion{
@@ -56,7 +59,22 @@ public class ControladorDonacion implements IControladorDonacion{
     
     }
     
+    @Override
+    public List<Donacion> GetDonaciones(){
+        return ManejadorDonacion.getInstancia().GetDonaciones();
+    }
     
-    
+    @Override
+    public List<Integer> GetIdDonaciones() {
+        var x = ManejadorDonacion.getInstancia().GetDonaciones();
+        var res = new ArrayList<Integer>();
+        
+        for(var f : x){
+            res.add(f.getId());
+            
+        }
+        
+        return res;
+    }
  }
 
