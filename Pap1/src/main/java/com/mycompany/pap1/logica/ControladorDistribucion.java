@@ -9,6 +9,8 @@ import com.mycompany.pap1.interfaces.IControladorDistribucion;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -26,21 +28,59 @@ public class ControladorDistribucion implements IControladorDistribucion {
     @Override
     public List<dtDistribucion> getTodasDistribuciones() {
         var res = new ArrayList<dtDistribucion>();
-        // sacar del manejador todas la distri
+        
+        var dist = ManejadorDistribucion.getInstancia().getDistribuciones();
+        
+        for(var d : dist ){
+            
+            res.add(new dtDistribucion(d.getFechaPreparacion(),d.getFechaEntrega(),
+                    d.getEstadoDistribucion(),d.getBeneficiario(),d.getDonacion()));
+        }
         return res;
     }
 
     @Override
     public List<dtDistribucion> getDistribucionesPorEstado(EstadoDistribucion estado) {
         var res = new ArrayList<dtDistribucion>();
-        // sacar del manejador todas las segun igual al estado
+        
+        var dist = ManejadorDistribucion.getInstancia().getDistribucionesPorEstado(estado);
+        
+        for(var d : dist ){
+            
+            res.add(new dtDistribucion(d.getFechaPreparacion(),d.getFechaEntrega(),
+                    d.getEstadoDistribucion(),d.getBeneficiario(),d.getDonacion()));
+        }
         return res;
     }
     
     @Override
     public void ModificarDatosDistribucion(dtDistribucion dist,LocalDate nuevaFecha, EstadoDistribucion nuevoEstado ){
         
-        //modificar en la base de datos la dist por la key y poner los nuevos valores
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        EntityTransaction transaction = null;
+
+ try {
+        transaction = em.getTransaction();
+        transaction.begin();
+        String hql = "UPDATE YourEntity e SET e.fechaentrega = :newValue1, e.estado = :newValue2 WHERE e.id = :id AND e.email = :email";
+        em.createQuery(hql)
+          .setParameter("newValue1", nuevaFecha)
+          .setParameter("newValue2", nuevoEstado)
+          .setParameter("id", dist.getDonacion().getId())
+          .setParameter("email", dist.getBeneficiario().getEmail())
+          .executeUpdate();
+
+        transaction.commit();
+         } catch (Exception e) {
+        if (transaction != null && transaction.isActive()) {
+            transaction.rollback();
+        }
+        e.printStackTrace();
+    } finally {
+        em.close();
+        emf.close();
+    }
         
     }
 }

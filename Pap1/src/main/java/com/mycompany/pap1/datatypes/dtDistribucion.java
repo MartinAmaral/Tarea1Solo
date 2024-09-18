@@ -39,14 +39,18 @@ public class dtDistribucion {
     public EstadoDistribucion getEstadoDistribucion(){
         return estado;
     }
+
+    public EstadoDistribucion getEstado() {
+        return estado;
+    }
+
+    public Beneficiario getBeneficiario() {
+        return beneficiario;
+    }
+
+    public Donacion getDonacion() {
+        return donacion;
+    }
     
-    public void setFechaPreparacion(LocalDate fecha){
-        fechaPreparacion = fecha;
-    }
-    public void setFechaEntrega(LocalDate fecha){
-        fechaEntrega = fecha;
-    }
-    public void setEstadoDistribucion(EstadoDistribucion estado){
-        this.estado = estado;
-    }
+    
 }

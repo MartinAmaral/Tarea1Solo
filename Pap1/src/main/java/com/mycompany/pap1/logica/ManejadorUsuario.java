@@ -8,6 +8,7 @@ package com.mycompany.pap1.logica;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -39,8 +40,34 @@ public class ManejadorUsuario {
     }
     
     public List<Usuario> GetUsuarios(){
-        var res = new ArrayList<Usuario>();
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        
+        
+        String jpql = "SELECT u FROM Usuario u";
+        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+
+        List<Usuario> res = query.getResultList();
+        
+        em.close();
+        emf.close();
         return res;
+    }
+    
+    public List<Beneficiario> GetBeneficiarios(){
+     
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        
+        
+        String jpql = "SELECT b FROM Beneficiario b";
+        TypedQuery<Beneficiario> query = em.createQuery(jpql, Beneficiario.class);
+
+        List<Beneficiario> res = query.getResultList();
+        em.close();
+        emf.close();
+        return res;
+        
     }
     
 }

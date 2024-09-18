@@ -19,6 +19,7 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/fabricas/FabricaCUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ManejadorDistribucion.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtBeneficiario.java

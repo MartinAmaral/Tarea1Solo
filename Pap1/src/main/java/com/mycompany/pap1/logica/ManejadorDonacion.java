@@ -59,12 +59,12 @@ public class ManejadorDonacion {
             
             tipoQ = "Art";
         }
-        else tipoQ= "Ali";
+        else tipoQ= "Alim";
         
         
         String jpql = "SELECT d FROM Donacion d WHERE d.dtype = :tipo";
         TypedQuery<Donacion> query = em.createQuery(jpql, Donacion.class);
-        query.setParameter("tipo",tipoQ ); // Replace with actual value
+        query.setParameter("tipo",tipoQ );
 
         List<Donacion> res = query.getResultList();
         
@@ -72,4 +72,21 @@ public class ManejadorDonacion {
         emf.close();
         return res;
     }
+    
+    public List<Donacion> GetDonaciones(){
+        
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+       
+        
+        String jpql = "SELECT d FROM Donacion d";
+        TypedQuery<Donacion> query = em.createQuery(jpql, Donacion.class);
+        
+        List<Donacion> res = query.getResultList();
+        
+        em.close();
+        emf.close();
+        return res;
+    }
+    
 }

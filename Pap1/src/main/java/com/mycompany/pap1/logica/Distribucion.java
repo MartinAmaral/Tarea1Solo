@@ -63,4 +63,30 @@ public class Distribucion implements Serializable{
     public void setEstadoDistribucion(EstadoDistribucion estado){
         this.estado = estado;
     }
+
+    public EstadoDistribucion getEstado() {
+        return estado;
+    }
+
+    public Beneficiario getBeneficiario() {
+        return beneficiario;
+    }
+
+    public Donacion getDonacion() {
+        return donacion;
+    }
+
+    public void setEstado(EstadoDistribucion estado) {
+        this.estado = estado;
+    }
+
+    public void setBeneficiario(Beneficiario beneficiario) {
+        this.beneficiario = beneficiario;
+    }
+
+    public void setDonacion(Donacion donacion) {
+        this.donacion = donacion;
+    }
+    
+    
 }
