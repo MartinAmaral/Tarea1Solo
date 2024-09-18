@@ -64,5 +64,17 @@ public class ControladorDonacion implements IControladorDonacion{
         return ManejadorDonacion.getInstancia().GetDonaciones();
     }
     
+    @Override
+    public List<Integer> GetIdDonaciones() {
+        var x = ManejadorDonacion.getInstancia().GetDonaciones();
+        var res = new ArrayList<Integer>();
+        
+        for(var f : x){
+            res.add(f.getId());
+            
+        }
+        
+        return res;
+    }
  }
 

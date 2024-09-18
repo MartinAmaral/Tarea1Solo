@@ -63,4 +63,5 @@ com/mycompany/pap1/presentacion/AgregarUsuario$4.class
 com/mycompany/pap1/datatypes/dtBeneficiario.class
 com/mycompany/pap1/logica/ManejadorUsuario.class
 com/mycompany/pap1/presentacion/ModificarDistribucion$3.class
+com/mycompany/pap1/presentacion/AgregarDistribucion$3.class
 com/mycompany/pap1/presentacion/AgregarRepartidor$2.class

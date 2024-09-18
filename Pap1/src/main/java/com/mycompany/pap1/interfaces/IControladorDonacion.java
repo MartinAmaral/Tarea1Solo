@@ -24,4 +24,5 @@ public interface IControladorDonacion {
         
         //
         public List<Donacion> GetDonaciones();
+        public List<Integer> GetIdDonaciones();
 }

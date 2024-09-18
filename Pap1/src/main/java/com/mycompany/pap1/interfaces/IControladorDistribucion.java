@@ -15,4 +15,5 @@ public interface IControladorDistribucion {
     List<dtDistribucion> getTodasDistribuciones();
     List<dtDistribucion> getDistribucionesPorEstado(EstadoDistribucion estado);
     void ModificarDatosDistribucion(dtDistribucion dist,LocalDate nuevaFecha, EstadoDistribucion nuevoEstado );
+    void AgregarDistribucion(LocalDate fechaEntrega,LocalDate fechaPreparacion,String mail,int id);
 }

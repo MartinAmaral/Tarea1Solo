@@ -4,10 +4,11 @@
  */
 package com.mycompany.pap1.presentacion;
 
-import com.mycompany.pap1.datatypes.dtBeneficiario;
-import com.mycompany.pap1.datatypes.dtDonacion;
+import com.mycompany.pap1.fabricas.FabricaCDistribucion;
 import com.mycompany.pap1.fabricas.FabricaCDonacion;
 import com.mycompany.pap1.fabricas.FabricaCUsuario;
+import com.mycompany.pap1.logica.EstadoDistribucion;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -18,20 +19,32 @@ import javax.swing.JOptionPane;
  */
 public class AgregarDistribucion extends JInternalFrame {
 
-    
     private List<String> ben;
-    private List<int> don;
+    private List<Integer> don;
+
     /**
      * Creates new form AgregarDistribucion
      */
     public AgregarDistribucion() {
         initComponents();
-        
+
         Id.removeAllItems();
         Mail.removeAllItems();
-        
-        ben = FabricaCUsuario.getControlador().GetBeneficiarios();
-        don = FabricaCDonacion.getControlador().GetDonaciones();  
+
+        ben = FabricaCUsuario.getControlador().GetEmailBeneficiarios();
+        don = FabricaCDonacion.getControlador().GetIdDonaciones();
+
+        Id.addItem("<>");
+        Mail.addItem("<>");
+
+        for (var x : ben) {
+            Mail.addItem(x);
+
+        }
+
+        for (var x : don) {
+            Id.addItem(x.toString());
+        }
     }
 
     /**
@@ -182,92 +195,100 @@ public class AgregarDistribucion extends JInternalFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         String mensaje = "";
-        
+
         try {
-            int diaPrep = (Integer)(DiaPrep.getValue());
-            int mesPrep = (Integer)(MesPrep.getValue());
-            int anoPrep = (Integer)(AnoPrep.getValue());
+            int diaPrep = (Integer) (DiaPrep.getValue());
+            int mesPrep = (Integer) (MesPrep.getValue());
+            int anoPrep = (Integer) (AnoPrep.getValue());
 
-            int diaE = (Integer)(DiaEntrega.getValue());
-            int mesE = (Integer)(MesEntrega.getValue());
-            int anoE = (Integer)(AnoEntrega.getValue());
-            
-            if(diaPrep < 1 || diaPrep > 31){
+            int diaE = (Integer) (DiaEntrega.getValue());
+            int mesE = (Integer) (MesEntrega.getValue());
+            int anoE = (Integer) (AnoEntrega.getValue());
+
+            if (diaPrep < 1 || diaPrep > 31) {
                 mensaje = "Día inválido";
                 throw new Exception();
             }
-            if(mesPrep < 1 || mesPrep > 12){
+            if (mesPrep < 1 || mesPrep > 12) {
                 mensaje = "Mes inválido";
                 throw new Exception();
             }
 
-            if(anoPrep <1900 || anoPrep >2024){
+            if (anoPrep < 1900 || anoPrep > 2024) {
                 mensaje = "Ano invalido";
                 throw new Exception();
             }
 
-            if((mesPrep == 4 || mesPrep == 6 || mesPrep == 9 || mesPrep == 11) && diaPrep > 30){
+            if ((mesPrep == 4 || mesPrep == 6 || mesPrep == 9 || mesPrep == 11) && diaPrep > 30) {
                 mensaje = "Día inválido";
                 throw new Exception();
             }
 
-            if(mesPrep == 2) {
-                if(diaPrep > 29) {
+            if (mesPrep == 2) {
+                if (diaPrep > 29) {
                     mensaje = "Día inválido";
                     throw new Exception();
                 }
-                if(diaPrep == 29 && !(anoPrep % 4 == 0 && (anoPrep % 100 != 0 || anoPrep % 400 == 0))) {
-                    mensaje = "Día inválido en año no bisiesto";
-                    throw new Exception();
-                }
-            }
-            
-            if(diaE < 1 || diaE > 31){
-                mensaje = "Día inválido";
-                throw new Exception();
-            }
-            if(mesE < 1 || mesE > 12){
-                mensaje = "Mes inválido";
-                throw new Exception();
-            }
-
-            if(anoE <1900 || anoE >2024){
-                mensaje = "Ano invalido";
-                throw new Exception();
-            }
-
-            if((mesE == 4 || mesE == 6 || mesE == 9 || mesE == 11) && diaE > 30){
-                mensaje = "Día inválido";
-                throw new Exception();
-            }
-
-            if(mesE == 2) {
-                if(diaE > 29) {
-                    mensaje = "Día inválido";
-                    throw new Exception();
-                }
-                if(diaE == 29 && !(anoE % 4 == 0 && (anoE % 100 != 0 || anoE % 400 == 0))) {
+                if (diaPrep == 29 && !(anoPrep % 4 == 0 && (anoPrep % 100 != 0 || anoPrep % 400 == 0))) {
                     mensaje = "Día inválido en año no bisiesto";
                     throw new Exception();
                 }
             }
 
+            if (diaE < 1 || diaE > 31) {
+                mensaje = "Día inválido";
+                throw new Exception();
+            }
+            if (mesE < 1 || mesE > 12) {
+                mensaje = "Mes inválido";
+                throw new Exception();
+            }
+
+            if (anoE < 1900 || anoE > 2024) {
+                mensaje = "Ano invalido";
+                throw new Exception();
+            }
+
+            if ((mesE == 4 || mesE == 6 || mesE == 9 || mesE == 11) && diaE > 30) {
+                mensaje = "Día inválido";
+                throw new Exception();
+            }
+
+            if (mesE == 2) {
+                if (diaE > 29) {
+                    mensaje = "Día inválido";
+                    throw new Exception();
+                }
+                if (diaE == 29 && !(anoE % 4 == 0 && (anoE % 100 != 0 || anoE % 400 == 0))) {
+                    mensaje = "Día inválido en año no bisiesto";
+                    throw new Exception();
+                }
+            }
             
+            if(Id.getSelectedIndex() == 0 || Mail.getSelectedIndex() ==0 )
+            {
+                mensaje = "Opcion Incorrecta";
+                throw new Exception();
+            }
+
+            FabricaCDistribucion.getControlador().AgregarDistribucion(LocalDate.of(anoE,mesE,diaE),
+                    LocalDate.of(anoPrep,mesPrep,diaPrep), (String)Mail.getSelectedItem(), Integer.parseInt((String)Id.getSelectedItem()));
             // Mensaje de éxito
-            JOptionPane.showMessageDialog(null, 
-            "Distribucion guardada exitosamente", 
-            "Éxito", 
-            JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                    "Distribucion guardada exitosamente",
+                    "Éxito",
+                    JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-        
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, 
-            mensaje, 
-            "Error", 
-            JOptionPane.ERROR_MESSAGE);
-    }     
+            System.out.println(e.getMessage());
+            JOptionPane.showMessageDialog(null,
+                    mensaje,
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void MailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MailActionPerformed

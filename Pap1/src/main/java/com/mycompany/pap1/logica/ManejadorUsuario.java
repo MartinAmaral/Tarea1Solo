@@ -25,7 +25,7 @@ public class ManejadorUsuario {
             return instancia;
     }
     
-    public void AgregarUsuario(Usuario usuario){
+    public void AgregarUsuario(Object usuario){
         var emf = Persistence.createEntityManagerFactory("tarea");
         var em = emf.createEntityManager();
         
