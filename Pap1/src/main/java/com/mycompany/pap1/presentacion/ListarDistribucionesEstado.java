@@ -35,7 +35,7 @@ public class ListarDistribucionesEstado extends JInternalFrame {
     
     private void PonerInformacion(){
         
-        List<dtDistribucion> distribuciones; 
+        List<dtDistribucion> distribuciones;
         
         if(ComboBox.getSelectedIndex() == 0){
             distribuciones = FabricaCDistribucion.getControlador().getTodasDistribuciones();

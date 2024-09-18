@@ -47,7 +47,7 @@ public class ManejadorDistribucion {
         
         String jpql = "SELECT d FROM Distribucion d WHERE d.estado = :estado";
         TypedQuery<Distribucion> query = em.createQuery(jpql, Distribucion.class);
-        query.setParameter("estado",estado.toString());
+        query.setParameter("estado",estado);
 
         List<Distribucion> res = query.getResultList();
         
