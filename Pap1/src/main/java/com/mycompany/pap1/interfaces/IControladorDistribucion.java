@@ -5,6 +5,7 @@
 package com.mycompany.pap1.interfaces;
 import com.mycompany.pap1.datatypes.dtDistribucion;
 import com.mycompany.pap1.logica.EstadoDistribucion;
+import java.time.LocalDate;
 import java.util.List;
 /**
  *
@@ -13,4 +14,5 @@ import java.util.List;
 public interface IControladorDistribucion {
     List<dtDistribucion> getTodasDistribuciones();
     List<dtDistribucion> getDistribucionesPorEstado(EstadoDistribucion estado);
+    void ModificarDatosDistribucion(dtDistribucion dist,LocalDate nuevaFecha, EstadoDistribucion nuevoEstado );
 }

@@ -5,16 +5,21 @@
 package com.mycompany.pap1.interfaces;
 
 
-import com.mycompany.pap1.datatypes.dtDonacion;
-import com.mycompany.pap1.logica.Donacion;
+import java.time.LocalDate;
 
 /**
  *
  * @author horacio
  */
 public interface IControladorDonacion {
-        public void modificarDonacion(int id, dtDonacion datosModificados);
+    
+        // caso alta donacion
+        public void AgregarDatosDonacion(LocalDate fecha);
+        public void AgregarDatosAlimento(String descripcion , int cantidad);
+        public void AgregarDatosArticulo(String descripcion, float peso , String dimensiones);
+        public void ConfirmarAltaAlimento();
+        public void ConfirmarAltaArticulo();
         
-        public void agregarDonacion(dtDonacion donacion);
-        dtDonacion buscarDonacionPorId(int id);
+        //
+        
 }

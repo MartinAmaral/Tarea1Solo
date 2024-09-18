@@ -170,6 +170,12 @@ public class AgregarUsuario extends JInternalFrame {
         String mensaje = "";
         String mail =  TextEmail.getText();
         try {
+            
+            if(TextNombre.getText().length() ==0){
+                mensaje = "Ingrese un nombre";
+                throw new Exception();
+            }
+            
             if(!mail.contains("@")){
                 mensaje = "Ingrese un Email valido";
                 throw new Exception();
@@ -189,7 +195,7 @@ public class AgregarUsuario extends JInternalFrame {
             
         if (RadioBeneficiario.isSelected()) {
             // Mostrar el frame AgregarBeneficiario
-            AgregarBeneficiario agregarBeneficiario = new AgregarBeneficiario();
+            AgregarBeneficiario agregarBeneficiario = new AgregarBeneficiario(this);
             agregarBeneficiario.setVisible(true);
             
             JDesktopPane desktopPane = getDesktopPane(); 
@@ -199,7 +205,7 @@ public class AgregarUsuario extends JInternalFrame {
                 agregarBeneficiario.setVisible(true);
             }
         } else {
-            AgregarRepartidor agregarRepartidor = new AgregarRepartidor();
+            AgregarRepartidor agregarRepartidor = new AgregarRepartidor(this);
             agregarRepartidor.setVisible(true);
             
             JDesktopPane desktopPane = getDesktopPane();

@@ -8,6 +8,7 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/interfaces/IControladorUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/EstadoDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Beneficiario.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarAlimento.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/FramePrincipal.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/ListarBeneficiarios.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/interfaces/Fabrica.java
@@ -18,10 +19,11 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/fabricas/FabricaCUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ManejadorDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtDonacion.java
-/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/ModificarDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtBeneficiario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarUsuario.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/ModificarDistribucion.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/fabricas/FabricaCDonacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ControladorDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ControladorUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/ManejadorDonacion.java
@@ -29,6 +31,7 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Donacion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtArticulo.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Usuario.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarArticulo.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarRepartidor.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtUsuario.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Alimento.java

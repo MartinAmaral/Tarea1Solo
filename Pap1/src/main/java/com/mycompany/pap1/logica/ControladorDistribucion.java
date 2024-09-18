@@ -6,6 +6,7 @@ package com.mycompany.pap1.logica;
 
 import com.mycompany.pap1.datatypes.dtDistribucion;
 import com.mycompany.pap1.interfaces.IControladorDistribucion;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,4 +37,10 @@ public class ControladorDistribucion implements IControladorDistribucion {
         return res;
     }
     
+    @Override
+    public void ModificarDatosDistribucion(dtDistribucion dist,LocalDate nuevaFecha, EstadoDistribucion nuevoEstado ){
+        
+        //modificar en la base de datos la dist por la key y poner los nuevos valores
+        
+    }
 }
