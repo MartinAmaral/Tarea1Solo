@@ -4,32 +4,39 @@
  */
 package com.mycompany.pap1.logica;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author martin
  */
-abstract class Usuario {
+@MappedSuperclass
+public abstract class Usuario {
+
     protected String nombre;
+    @Id
+    @Column(name = "email")
     protected String email;
 
     public Usuario() {
         super();
     }
-        
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    
-    public void setNombre(String nombre){
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public void setEmail(String email){
-        this.email = email;   
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
