@@ -33,6 +33,7 @@ com/mycompany/pap1/presentacion/ModificarDistribucion.class
 com/mycompany/pap1/logica/Beneficiario.class
 com/mycompany/pap1/logica/Donacion.class
 com/mycompany/pap1/logica/Alimento.class
+com/mycompany/pap1/logica/DistribucionID.class
 com/mycompany/pap1/logica/Barrio.class
 com/mycompany/pap1/presentacion/AgregarUsuario$2.class
 com/mycompany/pap1/logica/Distribucion.class

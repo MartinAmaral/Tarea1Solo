@@ -190,6 +190,7 @@ public class AgregarBeneficiario extends JInternalFrame {
                 LocalDate.of(ano, mes, dia), EstadoBeneficiario.ACTIVO,
                 Barrio.valueOf((String)ComboBoxBarrio.getSelectedItem()));
         
+        FabricaCUsuario.getControlador().ConfirmarAltaBeneficiario();
         // Mensaje de éxito
         JOptionPane.showMessageDialog(null, 
         "Beneficiario guardado exitosamente", 

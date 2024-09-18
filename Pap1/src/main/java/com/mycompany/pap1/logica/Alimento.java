@@ -6,17 +6,26 @@ package com.mycompany.pap1.logica;
 
 
 import java.time.LocalDate;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  *
  * @author martin
  */
+@Entity
+@DiscriminatorValue("Alim")
 public class Alimento extends Donacion {
+    
     private String descripcionProductos;
     private int cantElementos;
 
-    public Alimento(String descripcionProductos, int cantElementos, int id, LocalDate fechaIngresada) {
-        super(id, fechaIngresada);
+    public Alimento(){
+        super();
+    }
+    
+    public Alimento(String descripcionProductos, int cantElementos, LocalDate fechaIngresada) {
+        this.fechaIngresada = fechaIngresada;
         this.descripcionProductos = descripcionProductos;
         this.cantElementos = cantElementos;
     }

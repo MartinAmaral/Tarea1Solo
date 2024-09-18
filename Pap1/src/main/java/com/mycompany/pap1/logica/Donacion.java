@@ -4,40 +4,61 @@
  */
 package com.mycompany.pap1.logica;
 
-import java.util.List;
 import java.time.LocalDate;
+import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 /**
  *
  * @author martin
  */
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class Donacion {
-    private static int contador = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     int id;
-    LocalDate fechaIngresada;
+    LocalDate fechaIngresada; 
+    @OneToMany(mappedBy = "beneficiario")
+    private List<Distribucion> distribuciones;
 
     public Donacion() {
         super();
     }
 
-    public Donacion(int id, LocalDate fechaIngresada) {
-        this.id = generarId();
+    public Donacion(LocalDate fechaIngresada) {
         this.fechaIngresada = fechaIngresada;
     }
     
-    private static int generarId() {
-        return ++contador; 
-    }
     public int getId(){
         return id;
     }
     public LocalDate getFechaIngresada(){
         return fechaIngresada;
     }
+
+    public List<Distribucion> getDistribuciones() {
+        return distribuciones;
+    }
+    
+    
     
     public void setId(int id){
         this.id = id;
     }
     public void setFechaIngresada(LocalDate fecha){
         this.fechaIngresada = fecha;
+    }
+
+    public void setDistribuciones(List<Distribucion> distribuciones) {
+        this.distribuciones = distribuciones;
     }
 }

@@ -3,6 +3,7 @@
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Repartidor.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/Distribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/presentacion/AgregarBeneficiario.java
+/home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/logica/DistribucionID.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/datatypes/dtAlimento.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/interfaces/IControladorDistribucion.java
 /home/martin/NetBeansProjects/Pap1/src/main/java/com/mycompany/pap1/interfaces/IControladorUsuario.java

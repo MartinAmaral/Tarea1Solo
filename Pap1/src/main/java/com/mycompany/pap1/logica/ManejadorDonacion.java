@@ -6,9 +6,9 @@ package com.mycompany.pap1.logica;
 
 
 
-import com.mycompany.pap1.datatypes.dtDonacion;
-import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -16,7 +16,6 @@ import java.util.List;
  */
 public class ManejadorDonacion {
     private static ManejadorDonacion instancia = null;
-    private List<Donacion> donaciones = new ArrayList<>();
     
     private ManejadorDonacion(){}
     
@@ -25,25 +24,52 @@ public class ManejadorDonacion {
                 instancia = new ManejadorDonacion();
             return instancia;
     }
-        public void agregarDonacion(Donacion donacion) {
-        donaciones.add(donacion);
-        System.out.println("Donacion registrada con exito.");
+    
+    public void agregarDonacion(Donacion donacion) {
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+		
+        em.persist(donacion);
+		
+        em.getTransaction().commit();
+        
+        em.close();
+        emf.close();
     }
-        public Donacion buscarDonacionPorId(int id) {
-        for (Donacion donacion : donaciones) {
-            if (donacion.getId() == id) {
-                return donacion;
-            }
-        }
-        return null;
+    public Donacion buscarDonacionPorId(int id) {
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        
+        var res= em.find(Donacion.class, id);
+        
+        em.close();
+        emf.close();
+        return res;
     }
-            public List<Donacion> obtenerDonacionesPorTipo(Class<? extends Donacion> tipo) {
-        List<Donacion> resultado = new ArrayList<>();
-        for (Donacion donacion : donaciones) {
-            if (tipo.isInstance(donacion)) {
-                resultado.add(donacion);
-            }
+    
+    public List<Donacion> obtenerDonacionesPorTipo(Class<? extends Donacion> tipo) {
+        var emf = Persistence.createEntityManagerFactory("tarea");
+        var em = emf.createEntityManager();
+        
+        String tipoQ;
+        
+        if(tipo == Articulo.class){
+            
+            tipoQ = "Art";
         }
-        return resultado;
+        else tipoQ= "Ali";
+        
+        
+        String jpql = "SELECT d FROM Donacion d WHERE d.dtype = :tipo";
+        TypedQuery<Donacion> query = em.createQuery(jpql, Donacion.class);
+        query.setParameter("tipo",tipoQ ); // Replace with actual value
+
+        List<Donacion> res = query.getResultList();
+        
+        em.close();
+        emf.close();
+        return res;
     }
 }

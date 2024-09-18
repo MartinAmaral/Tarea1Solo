@@ -4,6 +4,8 @@
  */
 package com.mycompany.pap1.presentacion;
 
+import com.mycompany.pap1.fabricas.FabricaCDonacion;
+import java.time.LocalDate;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -177,6 +179,8 @@ public class AgregarDonacion extends JInternalFrame {
                 mensaje = "Seleccione un tipo de donacion";
                 throw new Exception();
             }
+            
+            FabricaCDonacion.getControlador().AgregarDatosDonacion(LocalDate.of(ano,mes,dia));
             
             if(RadioAlimento.isSelected()){
                 var panel = new AgregarAlimento(this);

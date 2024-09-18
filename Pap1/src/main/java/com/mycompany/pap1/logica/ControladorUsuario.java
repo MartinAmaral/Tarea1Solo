@@ -36,7 +36,7 @@ public class ControladorUsuario implements IControladorUsuario {
     @Override
     public boolean ExisteUsuario(String email) {
         var m = ManejadorUsuario.getInstancia();
-        for (Usuario us : m.usuarios) {
+        for (Usuario us : m.GetUsuarios()) {
             if (us.getEmail().equals(email)) {
                 return true;
             }
@@ -66,14 +66,14 @@ public class ControladorUsuario implements IControladorUsuario {
     @Override
     public void ConfirmarAltaBeneficiario() {
         var m = ManejadorUsuario.getInstancia();
-        m.usuarios.add(new Beneficiario(altaUsuarioNombre,altaUsuarioEmail, altaUsuarioDireccion,
+        m.AgregarUsuario(new Beneficiario(altaUsuarioNombre,altaUsuarioEmail, altaUsuarioDireccion,
         altaUsuarioFecha, altaUsuarioEstado, altaUsuarioBarrio));
     }
 
     @Override
     public void ConfirmarAltaRepartidor() {
         var m = ManejadorUsuario.getInstancia();
-        m.usuarios.add(new Repartidor(altaUsuarioNombre,altaUsuarioEmail,altaUsuarioLicencia));
+        m.AgregarUsuario(new Repartidor(altaUsuarioNombre,altaUsuarioEmail,altaUsuarioLicencia));
     }
 
     @Override
@@ -88,7 +88,7 @@ public class ControladorUsuario implements IControladorUsuario {
     public List<dtBeneficiario> GetBeneficiarios() {
         var res = new ArrayList<dtBeneficiario>();
         var m = ManejadorUsuario.getInstancia();
-        var usuarios = m.usuarios;
+        var usuarios = m.GetUsuarios();
         
         for (Usuario usuario : usuarios) {
             if (usuario instanceof Beneficiario) {
